@@ -1,0 +1,59 @@
+﻿@model List<TeamMember>
+@{
+    ViewData["Title"] = "Index";
+    int count = 0;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <button class="btn btn-primary"  asp-action="create">CREATE</button>
+        </div>
+
+        <div class="col-md-8 mx-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">FullName</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">Desc</th>
+                        <th scope="col">TwitterUrl</th>
+                        <th scope="col">InstaUrl</th>
+                        <th scope="col">FacebookUrl</th>
+                        <th scope="col">LinkednUrl</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                    <tr>
+                        <th scope="row">@count</th>
+                        <td>@item.FullName</td>
+                        <td>@item.Position</td>
+                        <td>@item.Desc</td>
+                        <td>@item.TwitterUrl</td>
+                        <td>@item.InstaUrl</td>
+                        <td>@item.FacebookUrl</td>
+                        <td>@item.LinkednUrl</td>
+                        <td>
+                            <img src="~/uploads/teamMembers/@item.ImageFile" />
+                        </td>
+                        <td>
+                            <a asp-action="edit" class="btn btn-warning">EDIT</a>
+                            <a asp-action="delete" class="btn btn-danger">DELETE</a>
+
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
